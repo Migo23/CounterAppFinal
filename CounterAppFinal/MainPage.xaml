@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CounterAppFinal.MainPage"
+             BackgroundColor="#F2F2F2">
+
+    <StackLayout Padding="20">
+        <Label Text="Counter App"
+               FontSize="32"
+               HorizontalOptions="Center"
+               FontAttributes="Bold"
+               TextColor="#000000" />
+
+        <Entry x:Name="CounterNameEntry" 
+               Placeholder="Enter Counter Name" 
+               BackgroundColor="#FFFFFF" 
+               TextColor="#000000" 
+               Margin="0, 10, 0, 0" 
+               HeightRequest="50"  
+               FontSize="18"/>
+
+        <Entry x:Name="CounterValueEntry" 
+               Placeholder="Enter Initial Value" 
+               Keyboard="Numeric" 
+               BackgroundColor="#FFFFFF" 
+               TextColor="#000000" 
+               HeightRequest="50"  
+               FontSize="18"/>
+
+        <Button Text="Add Counter" 
+                Clicked="OnAddCounterClicked" 
+                BackgroundColor="#007AFF" 
+                TextColor="#FFFFFF" 
+                HeightRequest="50" 
+                Margin="0, 10, 0, 10" 
+                CornerRadius="8" 
+                FontSize="18"/>
+
+        <CollectionView ItemsSource="{Binding Counters}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="5" BorderColor="Gray" CornerRadius="10" BackgroundColor="#FFFFFF">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                            <Label Text="{Binding Name}" 
+                                   FontAttributes="Bold" 
+                                   VerticalOptions="Center" 
+                                   TextColor="#000000" 
+                                   FontSize="20" 
+                                   HorizontalOptions="StartAndExpand"/>
+
+                            <Button Text="+" 
+                                    Clicked="OnIncrementClicked" 
+                                    BackgroundColor="#5AC8FA" 
+                                    TextColor="#FFFFFF" 
+                                    WidthRequest="40"
+                                    Padding="10"
+                                    Margin="10"
+                                    CornerRadius="20"/>
+
+                            <Label Text="{Binding Value}" 
+                                   VerticalOptions="Center" 
+                                   FontSize="20" 
+                                   TextColor="#000000" 
+                                   WidthRequest="50" 
+                                   HorizontalOptions="Center"/>
+
+                            <Button Text="-" 
+                                    Clicked="OnDecrementClicked" 
+                                    BackgroundColor="#FF3B30" 
+                                    TextColor="#FFFFFF" 
+                                    WidthRequest="40"
+                                    Padding="10"
+                                    Margin="10"
+                                    CornerRadius="20"/>
+
+                            <Button Text="Delete" 
+                                    Clicked="OnDeleteCounterClicked" 
+                                    BackgroundColor="#FF9500" 
+                                    TextColor="#FFFFFF" 
+                                    WidthRequest="80"
+                                    Padding="10"
+                                    Margin="10"
+                                    CornerRadius="20"/>
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+
+</ContentPage>
